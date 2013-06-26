@@ -36,8 +36,14 @@
     					<li>
       					(<a href="{% url "edit-project" pk=project.id %}">edit</a>)
       					{{ project }}
-    					</li>
-  					{% endfor %}
+					</li><ul>
+						{% for hw in hardware_list %}
+						{% if hw.project_id == project.id %} 
+							<li>(<a href="{% url "edit-hardware" pk=hw.id %}">edit</a>) {{ hw }}</li>
+						{% endif %}
+						{% endfor %}
+						</ul>
+    					{% endfor %}
 				</ul>
 			</div>
 		</div>

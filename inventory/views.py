@@ -26,6 +26,10 @@ class ListHardwareView(ListView):
 class ListProjectView(ListView):
     model = Project
     template_name = 'list-project.html'
+    def get_context_data(self, **kwargs):
+        context = super(ListProjectView, self).get_context_data(**kwargs)
+        context['hardware_list'] = Hardware.objects.all()
+        return context
 
 class CreateProjectView(CreateView):
     model = Project
