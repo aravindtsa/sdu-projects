@@ -1,0 +1,59 @@
+<html>
+{% load staticfiles %}
+<head>
+	<title>SDU Projects</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" type="text/css" href="{% static 'inventory/style.css' %}" />
+</head>
+<body>
+	<div class="content">
+		
+		<div class="top_block H1">
+			<div class="content">
+				<h1>SDU Project List</h1>
+			</div>
+		</div>
+
+		<div class="background menu">
+		</div>
+		<div class="left_block menu">
+			<div class="content">
+				<h3><u>Menu</u></h3>
+				<li>
+					<a href="{% url "new-project" %}">add project</a>
+				</li><li>
+					<a href="{% url "list-hardware" %}">list hardware</a>
+				</li><li>
+					<a href="{% url "list-user" %}">list users</a>
+				</li><li>
+					<a href="{% url "list-userrel" %}">list user relations</a>
+				</li><li>
+					<a href="{% url "list-resources" %}">list resources</a>
+				</li>
+			</div>
+		</div>
+
+		<div class="background main">
+		</div>
+		<div class="center_block main">
+			<div class="content">
+				<ul>
+  					{% for project in object_list %}
+    					<li>
+      					(<a href="{% url "edit-project" pk=project.id %}">edit</a>)
+      					{{ project }}
+					</li><ul>
+						{% for hw in hardware_list %}
+						{% if hw.project_id == project.id %} 
+							<li>(<a href="{% url "edit-hardware" pk=hw.id %}">edit</a>) {{ hw }}</li>
+						{% endif %}
+						{% endfor %}
+						</ul>
+    					{% endfor %}
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+
