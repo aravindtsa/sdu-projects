@@ -1,0 +1,10 @@
+<h1>Delete Resources</h1>
+
+<p>Are you sure you want to delete this resource {{ resources }}?</p>
+
+<form action="{% url "delete-resources" pk=resources.id %}" method="POST">
+  {% csrf_token %}
+
+  <input type="submit" value="Yes, delete." />
+  <a href="{% url "list-resources" %}">No, cancel.</a>
+</form>

@@ -1,0 +1,51 @@
+<html>
+{% load staticfiles %}
+<head>
+	<title>Edit SDU User-Relations</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" type="text/css" href="{% static 'inventory/style.css' %}" />
+</head>
+<body>
+	<div class="content">
+		
+		<div class="top_block H1">
+			<div class="content">
+				{% if userrel.id %}
+				<h1>Edit User-Relation</h1>
+				{% else %}
+				<h1>Add User-Relation</h1>
+				{% endif %}
+			</div>
+		</div>
+
+		<div class="background menu">
+		</div>
+		<div class="left_block menu">
+			<div class="content">
+				<h3><u>Menu</u></h3>
+				<li>
+					<a href="{% url "list-userrel" %}">back to list</a>
+				</li>
+			</div>
+		</div>
+
+		<div class="background main">
+		</div>
+		<div class="center_block main">
+			<div class="content">
+				<form action="{{ action }}" method="POST">
+					{% csrf_token %}
+					<ul>
+					{{ form.as_p }}
+					</ul>
+					<input type="submit" value="Save" />
+				</form>
+
+				{% if userrel.id %}
+				<a href="{% url "delete-userrel" pk=userrel.id %}">Delete</a>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+</body>
+</html>
