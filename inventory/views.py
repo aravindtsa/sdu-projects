@@ -63,7 +63,7 @@ class ListUserRelView(ListView):
     template_name = 'list-userrel.html'
 
 
-class ListResourceView(ListView):
+class ListResourcesView(ListView):
     model = Resources
     template_name = 'list-resources.html'
 
