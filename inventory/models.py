@@ -18,12 +18,6 @@ class Hardware(models.Model):
 
 	def __unicode__(self):
 		return 'eITMS: %s - Model: %s - S/N: %s - Project: %s' % (self.eITMS_code, self.model_code, self.serial_number,self.project.name)
-#		return ' - '.join([
-#				'eITMS:' + self.eITMS_code,
-#				'model:' + self.model_code,
-#				's/n:' + self.serial_number,
-#				'project:' + self.project_id,
-#			])
 
 class Project(models.Model):
     name = models.CharField( max_length = 50, unique = True, )
@@ -34,3 +28,30 @@ class Project(models.Model):
 
     def __unicode__(self):
         return self.name
+
+class User(models.Model):
+    name = models.CharField( max_length = 100, )
+    email = models.EmailField( max_length = 254, )
+    company = models.CharField( max_length = 100, )
+    comment = models.CharField( max_length = 140, )
+
+    def __unicode__(self):
+        return 'Name: %s - Email: %s - Company: %s' % (self.name, self.email, self.company)
+
+class Proj_Has_Users(models.Model):
+    project = models.ForeignKey('Project')
+    user = models.ForeignKey('User')
+    role = models.CharField( max_length = 100, )
+
+    def __unicode__(self):
+        return 'Project: %s - User: %s / %s' % (self.project.name, self.user.name, self.user.email)
+
+class Resources(models.Model):
+    hardware = models.ForeignKey('Hardware')
+    cpu = CharField( max_length = 25, blank = True, )
+    storage = CharField( max_length = 25, blank = True,  )
+    memory = CharField( max_length = 25, blank = True, )
+
+    def __unicode__(self):
+        return 'eITMS: %s - Model: %s - CPU: %s - Storage: %s - Memory: %s' % 
+                (self.hardware.eITMS_code, self.hardware.model_code, self.cpu, self.storage, self.memory)
