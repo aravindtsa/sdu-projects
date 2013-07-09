@@ -45,7 +45,40 @@
 					</li>
     					{% endfor %}
 				</ul>
-			</div>
+<a href="http://wwwin-metrics.cisco.com/protected-cgi-bin/ddts_query.cgi?expert=submitter-manager-org:wblomqui and Attribute~VMDC30 and Status:S[100101:]&fields=Attribute:Severity&type=directxl">Run Correct Query</a><br>
+				<a href="http://wwwin-metrics.cisco.com/protected-cgi-bin/ddts_query.cgi?expert=submitter-manager-org:wblomqui and Attribute~VMDC30 and Status:S[100101:]&fields=Status:Severity:Found:Age:Component:Attribute:Submitter-id:Submitted-on">Run Query</a>
+<form method=post action="http://wwwin-metrics.cisco.com/cgi-bin/report.cgi">
+<input type=hidden name=results value="/vws/aak/qddts/www/results/130708.055927.023786"></input>
+<input type=hidden name=ForeignBug value="VMDC30 and Status:S[100101:]"></input>
+<input type=hidden name=fields value="Status:Severity:Found:Age:Component:Attribute:Submitter-id:Submitted-on"></input>
+<input type=submit value="Get Report"></input>
+<input type=hidden name=first value="1"></input>
+<input type=hidden name=nid value="93"></input>
+</form>
+			
+<form method=post action="http://wwwin-metrics.cisco.com/protected-cgi-bin/email.cgi">
+<input type=hidden name=email-op value="Download"></input>
+<input type=hidden name=results value="/vws/aak/qddts/www/results/130708.073844.028370"></input>
+<input type=hidden name=flags value=""></input>
+<input type=hidden name=fields value="Status:Severity:Found:Age:Component:Attribute:Submitter-id:Submitted-on"></input>
+<input type=hidden name=line_numbers value=""></input>
+<input type=hidden name=ex_field value=""></input>
+<input type=submit value="Download Report"></input>
+</form>
+
+<form method=POST action="http://wwwin-metrics.cisco.com/cgi-bin/ddts_query.cgi">
+<textarea name=expert cols=80 rows=1 wrap=soft>
+http://wwwin-metrics.cisco.com/protected-cgi-bin/ddts_query.cgi?expert=submitter-manager-org:wblomqui and Attribute~VMDC30 and Status:S[100101:]&fields=Status:Severity:Found:Age:Component:Submitter-id:Submitted-on&type=directxl </textarea>
+<h3>Options</h3>
+<input type=radio name=type value="directtext" checked>Immediately goto text report</input>
+<br>
+<input type=radio name=type value="directxl">Immediately download Excel version of standard report</input>
+<br>
+<input type=radio name=type value="json">JSON format report</input>
+<input type=submit value="Run!" ></input>
+</form>
+
+</div>
 		</div>
 	</div>
 </body>
