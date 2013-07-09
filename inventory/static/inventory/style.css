@@ -5,6 +5,12 @@ html, body {
 	height: 100%; 
 }
 
+#brand_div{
+    background: url(http://i.imgur.com/jxyRabl.png) no-repeat;
+    background-size: 555px 432px;
+    background-position: 172px 135px;
+}
+
 .content {
 	min-height: 100%;
 	position: relative;
